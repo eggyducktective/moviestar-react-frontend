@@ -28,9 +28,13 @@ class SearchResults extends Component {
 
       // No matches for an EXACT name search, so use the
       // fuzzy (regex) search API instead, to find multiple results?
-      axios.get(`http://localhost:3000/api/v0/people/search/${ this.props.match.params.query}`)
-      .then(res => this.setState({ results: res.data  }) )
+      axios.get(`http://localhost:3000/api/v0/people/search/${this.props.match.params.query}`)
+
+      // .then(res => this.setState({ results: res.data }) )
+      // console.log(res.data)
+
       .catch(err => this.setState({error: err}) );
+      console.log(err);
     })
   } // componentDidMount
 
@@ -39,7 +43,9 @@ class SearchResults extends Component {
 
   render(){
     return(
-      <div>  </div>
+      <div>
+      <p>Testing</p>
+      </div>
     );
   }
 
