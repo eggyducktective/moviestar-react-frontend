@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SearchForm from './SearchForm';
+import ShowResult from './ShowResult';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
@@ -35,7 +36,6 @@ class SearchResults extends Component {
   } // componentDidMount
 
 
-// http://localhost:3000/api/v0/people/search/john
 
   render(){
 
@@ -52,7 +52,7 @@ class SearchResults extends Component {
 
     return(
       <div>
-      <p>Testing</p>
+      <p>No exact match, here are some suggestions:</p>
       <ul>
         { results }
       </ul>
