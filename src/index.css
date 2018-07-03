@@ -9,7 +9,7 @@ body {
 .left, .right {
 
   vertical-align: top;
-  height: 100vh;
+  height: 100%;
   /* border: 1px solid red; */
   display: inline-block;
 }
@@ -24,7 +24,10 @@ body {
 
 svg {
   height: 100vh !important;
+  width: 990px !important;
+
 }
+
 img {
   max-width: 200px;
 }
@@ -43,7 +46,7 @@ img {
 line.link {
   fill: none;
   stroke: rgba(48, 48, 48, 0.4) !important;
-  stroke-width: 6px !important;
+  stroke-width: 2px !important;
 }
 
 .node circle {

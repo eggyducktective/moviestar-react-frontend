@@ -14,8 +14,10 @@ class Graph extends Component {
       graphLinks: [],
       firstRender: false
     }
-    console.log(this.state.actorId);
+    this.expandNode = this.expandNode.bind(this);
   }
+
+
 
   // read from a button. added 'jackie chan' to graph
   _handNewStar(){
@@ -36,40 +38,55 @@ class Graph extends Component {
     var links = []
     for (var i = 0; i < this.props.actorIDs.length; i++) {
       console.log(this.props.actorIDs.length);
-      if (!( this.props.actorIDs[i] in this.state.renderedIds))
-      axios.get(`http://localhost:3000/api/v0/people/${this.props.actorIDs[i]}?output=d3`)
-      .then(res => {
-        this.setState({ graphNodes: [...this.state.graphNodes, ...res.data.nodes ] })
-        this.setState({ graphLinks: [...this.state.graphLinks, ...res.data.links ] })
+      if (!( this.state.renderedIds.includes(this.props.actorIDs[i]))) {
+        this.setState({ renderedIds: [...this.state.renderedIds, this.props.actorIDs[i] ] });
+        axios.get(`http://localhost:3000/api/v0/people/${this.props.actorIDs[i]}?output=d3`)
+        .then(res => {
+          this.setState({ graphNodes: [...this.state.graphNodes, ...res.data.nodes ] })
+          this.setState({ graphLinks: [...this.state.graphLinks, ...res.data.links ] })
 
-        if ( this.state.firstRender == false ) {
-          this.setState({firstRender: true});
-          this.state.graphNodes.shift()
-        }
-        this.state.renderedIds.push(this.props.actorIDs[i]);
-      })
+          if ( this.state.firstRender == false ) {
+            this.setState({firstRender: true});
+            this.state.graphNodes.shift()
+          }
+        })
+      }
     }
   }
 
-// type is person or movie
-  _addToGraph(id, type) {
-  var nodes = []
-  var links = []
-  console.log('egg');
-  if (!( id in this.state.renderedIds)) {
-    axios.get(`http://localhost:3000/api/v0/${type}/${id}?output=d3`)
-    .then(res => {
-      this.setState({ graphNodes: [...this.state.graphNodes, ...res.data.nodes ] })
-      this.setState({ graphLinks: [...this.state.graphLinks, ...res.data.links ] })
-      if ( this.state.firstRender == false ) {
-        this.setState({firstRender: true});
-        this.state.graphNodes.shift()
+
+  // expand node
+  expandNode(event) {
+    var nodeId = event;
+    var nodeType = '';
+    for (var i = 0; i < this.state.graphNodes.length; i++) {
+      if ( this.state.graphNodes[i].id == nodeId ) {
+        nodeType=this.state.graphNodes[i].label;
       }
-      this.state.renderedIds.push(id);
-      this.props.actorIDs.push(id);
+    }
+    // Fix this so api call correct
+    // I labelled this wrong in the node models.
+    if ( nodeType == "movie" ) { nodeType="movies"; };
+    if ( nodeType == "person" ) { nodeType="people"; }
+    console.log("node type " + nodeType);
+    console.log("node id" + nodeId)
+    var nodes = []
+    var links = []
+    console.log("Calling");
+    console.log(this.state.graphNodes);
+    axios.get(`http://localhost:3000/api/v0/${nodeType}/${nodeId}?output=d3`)
+      .then(res => {
+        for (var i = 0; i < res.data.nodes.length; i++) {
+          if ( res.data.nodes[i].id !=  nodeId ) {
+            this.setState({ graphNodes: [...this.state.graphNodes, res.data.nodes[i]] });
+          }
+        }
+        // this.setState({ graphNodes: [...this.state.graphNodes, ...res.data.nodes ] });
+
+        this.setState({ graphLinks: [...this.state.graphLinks, ...res.data.links ] });
     })
+    this.setState({ renderedIds: [...this.state.renderedIds, nodeId] })
   }
-}
 
   _clearGraph() {
     this.setState({ graphNodes: [] })
@@ -84,13 +101,12 @@ class Graph extends Component {
       staticGraph: false,
       strokeColor: 'green',
       node: {
-          color: 'rgb(238, 149, 14)',
+          // color: 'rgb(238, 149, 14)',
           size: 200,
           fontSize: 15,
           fontColor: 'black',
           highlightStrokeColor: 'rgb(245, 217, 100)',
-          labelProperty: 'name',
-          symbolType: 'circle'
+          labelProperty: 'name'
       },
       link: {
           highlightColor: '#2a2727',
@@ -106,6 +122,7 @@ class Graph extends Component {
           id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
           data={ data }
           config={myConfig}
+          onClickNode={ this.expandNode }
         />
       </div>
     );
