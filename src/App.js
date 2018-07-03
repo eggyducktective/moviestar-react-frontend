@@ -1,19 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import {HashRouter as Router, Route} from 'react-router-dom';
+
+import SearchForm from './components/SearchForm';
+import SearchResults from './components/SearchResults';
+import ShowResult from './components/ShowResult';
+import Graph from './components/Graph';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      actorIDs: []
+    };
+
+    this.drawGraph = this.drawGraph.bind(this);
+  }
+
+  drawGraph( actorID ){
+    console.warn('drawGraph', actorID);
+    // push actor id to an array, cannot change state directly
+    this.setState({actorIDs: [...this.state.actorIDs, actorID] });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+    <Router>
+      <div>
+        <div className="left">
+          <Route component={ SearchForm } />
+          <Route path="/search/:query" component={ SearchResults } />
+          <Route path="/actors/:query" render={ (props) => <ShowResult {...props}  addActorCallback={this.drawGraph} /> } />
+        </div>
+        <div className="right">
+          <Graph actorIDs={this.state.actorIDs} />
+        </div>
       </div>
+    </Router>
     );
   }
 }

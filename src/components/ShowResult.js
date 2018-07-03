@@ -67,8 +67,13 @@ class ShowResult extends Component {
       return(
         <div>
           <h2>Are you ready to look at some stars?</h2>
-            <p> Here is your search: { name }, born in { birthplace }</p>
 
+          <button onClick={() => this.props.addActorCallback(this.state.data.id)}>
+            Add to Graph!
+          </button>
+
+
+            <p> Here is your search: { name }, born in { birthplace }</p>
 
             <img src={ profileImageUrl }/>
             <ul>{ films }</ul>

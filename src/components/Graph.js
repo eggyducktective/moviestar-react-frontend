@@ -2,52 +2,38 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Graph as D3Graph } from 'react-d3-graph';
 
-class SearchForm extends Component {
-  constructor(){
-    super();
 
+class Graph extends Component {
+  constructor(props){
+    super(props);
     this.state = {
-      query: '',
-      actorIds: [887, 7399], // button should update this, then call _drawGraph
+      // needs to be in App parent
+      // actorIds: [887, 7399], // button should update this, then call _drawGraph
       renderedIds: [], // To store our already rendered actors
       graphNodes: [{id: 'Who are you searching for?'}], // Do not delete this. The page breaks
       graphLinks: [],
       firstRender: false
-      }
-      console.log(this.state.actorId);
-
-    // TEST DATA - person.id: 887 - owen wilson
-    // TEST DATA - person.id; 7399 - Ben Stiller
-    this._handleInput = this._handleInput.bind(this);
-    this._handleSubmit = this._handleSubmit.bind(this);
-    this._drawGraph = this._drawGraph.bind(this);
-    this._handNewStar = this._handNewStar.bind(this);
+    }
+    console.log(this.state.actorId);
   }
-  _handleInput(event){
-    console.log(event.target.value, event);
-
-    this.setState({query: event.target.value});
-  }
-
-  _handleSubmit(event){
-    event.preventDefault();
-    console.log( '_handleSubmit():', this.state.query );
-    this.props.history.push(`/search/${ this.state.query }`)
-  }
-
 
   // read from a button. added 'jackie chan' to graph
   _handNewStar(){
     this._addToGraph('18897','people')
-  }l
+  }
+
+  componentWillUpdate(){
+    console.log('Graph component updated!');
+    // this._drawGraph();
+  }
 
   _drawGraph() {
     var nodes = []
     var links = []
-    for (var i = 0; i < this.state.actorIds.length; i++) {
-      console.log(this.state.actorIds.length);
-      if (!( this.state.actorIds[i] in this.state.renderedIds))
-      axios.get(`http://localhost:3000/api/v0/people/${this.state.actorIds[i]}?output=d3`)
+    for (var i = 0; i < this.props.actorIDs.length; i++) {
+      console.log(this.props.actorIDs.length);
+      if (!( this.props.actorIDs[i] in this.state.renderedIds))
+      axios.get(`http://localhost:3000/api/v0/people/${this.props.actorIDs[i]}?output=d3`)
       .then(res => {
         this.setState({ graphNodes: [...this.state.graphNodes, ...res.data.nodes ] })
         this.setState({ graphLinks: [...this.state.graphLinks, ...res.data.links ] })
@@ -56,7 +42,7 @@ class SearchForm extends Component {
           this.setState({firstRender: true});
           this.state.graphNodes.shift()
         }
-        this.state.renderedIds.push(this.state.actorIds[i]);
+        this.state.renderedIds.push(this.props.actorIDs[i]);
       })
     }
   }
@@ -76,7 +62,7 @@ class SearchForm extends Component {
         this.state.graphNodes.shift()
       }
       this.state.renderedIds.push(id);
-      this.state.actorIds.push(id);
+      this.props.actorIDs.push(id);
     })
   }
 }
@@ -110,27 +96,15 @@ class SearchForm extends Component {
     };
     var data = {nodes: this.state.graphNodes, links: this.state.graphLinks};
     return(
-      <div className="App">
-        <h1>Search the Stars</h1>
-        <form onSubmit={ this._handleSubmit} >
-          <input type="text" placeholder="search the stars" onChange={this._handleInput} />
-          <input type="submit" value="Search" /> <br />
-          </form>
-
-        
-          {/*
-
-          <D3Graph
-            id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-            data={ data }
-            config={myConfig}
-            />
-
-            */}
-
+      <div>
+        <D3Graph
+          id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+          data={ data }
+          config={myConfig}
+        />
       </div>
     );
   }
 }
 
-export default SearchForm;
+export default Graph;

@@ -8,10 +8,14 @@ import ShowResult from './components/ShowResult';
 const Routes = (
   <Router>
     <div>
-      <Route component={ SearchForm } />
-      <Route path="/search/:query" component={ SearchResults } />
-      <Route path="/actors/:query" component={ ShowResult } />
-
+      <div className="left">
+        <Route component={ SearchForm } />
+        <Route path="/search/:query" component={ SearchResults } />
+        <Route path="/actors/:query" component={ ShowResult } />
+      </div>
+      <div className="right">
+        <Graph/>
+      </div>
     </div>
   </Router>
 )

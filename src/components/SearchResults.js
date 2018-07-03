@@ -10,11 +10,13 @@ class SearchResults extends Component {
 
   constructor(props){
     super(props);
+
     this.state = {
       data: null,
       error: null,
       results: []
     }
+    console.log(this.state);
   }
 
   componentDidMount(){
@@ -44,6 +46,7 @@ class SearchResults extends Component {
     }
 
     //    /actors/THENAME
+    console.log(this.state.results);
     const results = this.state.results.map( r => (
       <li>
         <Link to={`/actors/${r.name}`}>{r.name}</Link>
