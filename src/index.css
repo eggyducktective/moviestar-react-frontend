@@ -1,16 +1,25 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 5px;
   font-family: sans-serif;
+  background-color: pink;
 
 }
 
 .left, .right {
-  width: 48%;
+
   vertical-align: top;
   height: 100vh;
   /* border: 1px solid red; */
   display: inline-block;
+}
+
+.left {
+  width: 30%;
+}
+
+.right {
+  width: 60%;
 }
 
 svg {
@@ -18,4 +27,27 @@ svg {
 }
 img {
   max-width: 200px;
+}
+
+
+.node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-anchor: middle;
+}
+
+/* .node:hover {
+  font-size: 20px !important;
+} */
+
+line.link {
+  fill: none;
+  stroke: rgba(48, 48, 48, 0.4) !important;
+  stroke-width: 6px !important;
+}
+
+.node circle {
+  cursor: pointer;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
 }

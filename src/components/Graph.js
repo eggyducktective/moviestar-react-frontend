@@ -82,19 +82,21 @@ class Graph extends Component {
       nodeHighlightBehavior: true,
       automaticRearrangeAfterDropNode: true,
       staticGraph: false,
+      strokeColor: 'green',
       node: {
-          color: 'red',
-          size: 100,
-          fontSize: 12,
-          fontColor: 'grey',
-          highlightStrokeColor: 'blue',
+          color: 'rgb(238, 149, 14)',
+          size: 200,
+          fontSize: 15,
+          fontColor: 'black',
+          highlightStrokeColor: 'rgb(245, 217, 100)',
           labelProperty: 'name',
-          strokeColor: 'blue',
           symbolType: 'circle'
       },
       link: {
-          highlightColor: 'green',
-          linkHightlightBehavior: true
+          highlightColor: '#2a2727',
+          linkHightlightBehavior: false,
+          semanticStrokeWidth: false,
+          strokeHeight: 5
       }
     };
     var data = {nodes: this.state.graphNodes, links: this.state.graphLinks};
