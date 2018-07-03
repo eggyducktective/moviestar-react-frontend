@@ -8,11 +8,14 @@ body {
 .left, .right {
   width: 48%;
   vertical-align: top;
+  height: 100vh;
   /* border: 1px solid red; */
   display: inline-block;
 }
 
-
-/* #graph-id {
-  size: 300px;
-} */
+svg {
+  height: 100vh !important;
+}
+img {
+  max-width: 200px;
+}

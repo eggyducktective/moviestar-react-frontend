@@ -22,9 +22,13 @@ class Graph extends Component {
     this._addToGraph('18897','people')
   }
 
-  componentWillUpdate(){
-    console.log('Graph component updated!');
-    // this._drawGraph();
+  componentDidUpdate(prevProps){
+    // only redraw the graph if the prop we care about
+    // has been updated (i.e. the array of actor IDs)
+    if(prevProps.actorIDs.length !== this.props.actorIDs.length){
+      console.log('Change in ActorID length!');
+      this._drawGraph();
+    }
   }
 
   _drawGraph() {
@@ -76,18 +80,17 @@ class Graph extends Component {
   render() {
     const myConfig = {
       nodeHighlightBehavior: true,
+      automaticRearrangeAfterDropNode: true,
+      staticGraph: false,
       node: {
           color: 'red',
           size: 100,
-          fontSize: 10,
+          fontSize: 12,
           fontColor: 'grey',
-          automaticRearrangeAfterDropNode: true,
           highlightStrokeColor: 'blue',
           labelProperty: 'name',
           strokeColor: 'blue',
           symbolType: 'circle'
-
-
       },
       link: {
           highlightColor: 'green',

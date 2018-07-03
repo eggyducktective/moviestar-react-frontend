@@ -16,10 +16,10 @@ class App extends Component {
       actorIDs: []
     };
 
-    this.drawGraph = this.drawGraph.bind(this);
+    this.updateGraphActors = this.updateGraphActors.bind(this);
   }
 
-  drawGraph( actorID ){
+  updateGraphActors( actorID ){
     console.warn('drawGraph', actorID);
     // push actor id to an array, cannot change state directly
     this.setState({actorIDs: [...this.state.actorIDs, actorID] });
@@ -32,7 +32,7 @@ class App extends Component {
         <div className="left">
           <Route component={ SearchForm } />
           <Route path="/search/:query" component={ SearchResults } />
-          <Route path="/actors/:query" render={ (props) => <ShowResult {...props}  addActorCallback={this.drawGraph} /> } />
+          <Route path="/actors/:query" render={ (props) => <ShowResult {...props}  addActorCallback={this.updateGraphActors} /> } />
         </div>
         <div className="right">
           <Graph actorIDs={this.state.actorIDs} />

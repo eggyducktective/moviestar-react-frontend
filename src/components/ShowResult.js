@@ -16,13 +16,6 @@ class ShowResult extends Component {
     }
   }
 
-  // pushActor(actorId) {
-  //   console.log("eggs on child");
-  //   this.props.graphPushActorID(actorId);
-  //   console.log("eggs under child");
-  // // this.setState({fieldVal: e.target.value});
-  // }
-
   componentDidMount(){
     // FIRST: check for an EXACT match for the search name (case insensitive)
     axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
