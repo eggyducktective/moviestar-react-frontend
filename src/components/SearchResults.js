@@ -20,7 +20,7 @@ class SearchResults extends Component {
   }
 
   getActor(){
-    axios.get(`http://nodeapi4neo.herokuapp.com/api/v0/people/search/${this.props.match.params.query}`)
+    axios.get(`https://nodeapi4neo.herokuapp.com/api/v0/people/search/${this.props.match.params.query}`)
     .then(res => this.setState({ results: res.data }) )
     .catch(err => this.setState({error: err}) );
   }
