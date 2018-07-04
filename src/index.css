@@ -1,7 +1,16 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Markazi+Text');
+
+
+* {
+  font-family: 'Markazi Text', serif;
+  font-size: 19px;
+}
 body {
   margin: 0;
   padding: 5px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
 
 }
@@ -27,12 +36,12 @@ svg {
 }
 
 img {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 
 .node text {
-  font: 10px sans-serif;
+  font: 15px 'Markazi Text', serif;;
   pointer-events: none;
   text-anchor: middle;
 }
@@ -47,4 +56,27 @@ line.link {
   cursor: pointer;
   stroke: #3182bd;
   stroke-width: 1.5px;
+}
+
+h1 {
+  font-size: 50px;
+  text-shadow: 2px 2px rgb(92, 92, 92);
+}
+
+h2 {
+  font-size: 25px;
+}
+
+p {
+  font-size: 20px;
+}
+.graphButton {
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+input {
+  font-size: 19px;
+  width: 150px;
 }

@@ -96,12 +96,14 @@ class Graph extends Component {
       staticGraph: false,
       strokeColor: 'green',
       highlightDegree: 2,
+      panAndZoom: true,
       node: {
           size: 300,
           fontSize: 20,
           fontColor: 'black',
           highlightStrokeColor: 'rgb(245, 217, 100)',
-          labelProperty: 'name'
+          labelProperty: 'name',
+          opacity: 0.9
       },
       link: {
           highlightColor: '#2a2727',

@@ -59,14 +59,16 @@ class ShowResult extends Component {
 
             <p> Here is your search: <strong>{ name }</strong></p>
 
+            <button className="graphButton" onClick={() => this.props.addActorCallback(this.state.data.id)}>
+              Add to Graph
+            </button>
+            <button className="graphButton" onClick={this.clearGraph}>Refresh Graph</button>
+            
             <img src={ profileImageUrl }/>
             <br/>
-            <button onClick={() => this.props.addActorCallback(this.state.data.id)}>
-              Add to Graph!
-            </button>
-            <button onClick={this.clearGraph}>Refresh the Graph</button>
-            <p> {birthplace ? 'Birthplace:' + birthplace : ''}</p>
-            <p>{biography ? 'Biography:' + biography : ''}</p>
+
+            <p> <strong>Birthplace:</strong> {birthplace ? birthplace : 'N/A'}</p>
+            <p> <strong>Biography:</strong> {biography ? biography : 'N/A'}</p>
 
         </div>
       );

@@ -47,9 +47,11 @@ class SearchForm extends Component {
       <div className="App">
         <h1>Search the Stars</h1>
         <form onSubmit={ this._handleSubmit} >
-          <input type="text" placeholder="search the stars" onChange={this._handleInput} />
-          <input type="submit" value="Search" /> <br />
+          <input type="text" placeholder="Search now" onChange={this._handleInput} />
+
+          <input type="submit" value="Begin Your Search" /> <br />
           </form>
+
       </div>
     );
   }
