@@ -36,7 +36,8 @@ class Graph extends Component {
       // make sure we don't double submit "actor" to Graph.
       if (!( this.state.renderedIds.includes(this.props.actorIDs[i] ))) {
         this.setState({ renderedIds: [...this.state.renderedIds, this.props.actorIDs[i] ] });
-        axios.get(`http://localhost:3000/api/v0/people/${this.props.actorIDs[i]}?output=d3`)
+        axios.get(`http://nodeapi4neo.herokuapp.com/api/v0/people/${this.props.actorIDs[i]}?output=d3`)
+        // axios.get(`http://localhost:3000/api/v0/people/${this.props.actorIDs[i]}?output=d3`)
 
         .then(res => {
           this.setState({ graphNodes: [...this.state.graphNodes, ...res.data.nodes ] })
@@ -69,7 +70,8 @@ class Graph extends Component {
     if ( nodeType == "person" ) { nodeType="people"; }
     var nodes = []
     var links = []
-    axios.get(`http://localhost:3000/api/v0/${nodeType}/${nodeId}?output=d3`)
+    // axios.get(`http://localhost:3000/api/v0/${nodeType}/${nodeId}?output=d3`)
+    axios.get(`http://nodeapi4neo.herokuapp.com/api/v0/${nodeType}/${nodeId}?output=d3`)
       .then(res => {
         for (var i = 0; i < res.data.nodes.length; i++) {
 
