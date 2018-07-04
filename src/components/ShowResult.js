@@ -24,7 +24,15 @@ class ShowResult extends Component {
     })
     .catch( console.warn );
   }
-
+  componentDidUpdate(prevProps){
+    console.log(this.props.location.state)
+    axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
+    .then(res => {
+      console.log('showResult', res.data);
+      this.setState({ data: res.data  })
+    })
+    .catch( console.warn );
+  }
   render(){
     console.log(this.state.data);
    //

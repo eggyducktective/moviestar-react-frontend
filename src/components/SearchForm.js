@@ -28,16 +28,17 @@ class SearchForm extends Component {
     .then( response => {
       if( response.data.match === true ){
         // found an exact match, so go to show page for this actor
-        this.props.history.push(`/actors/${ this.state.query }`);
+        this.props.history.push({
+          pathname:`/actors/${ this.state.query }`,
+          state: response.data
+        });
+
       } else {
         // no exact match, go to search results page to perform inexact search
         this.props.history.push(`/search/${ this.state.query }`);
       }
     });
     // this.props.history.push(`/search/${ this.state.query }`)
-
-
-
   }
 
 
@@ -49,8 +50,6 @@ class SearchForm extends Component {
           <input type="text" placeholder="search the stars" onChange={this._handleInput} />
           <input type="submit" value="Search" /> <br />
           </form>
-
-
       </div>
     );
   }
