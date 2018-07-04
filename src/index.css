@@ -2,15 +2,13 @@ body {
   margin: 0;
   padding: 5px;
   font-family: sans-serif;
-  background-color: pink;
+  background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
 
 }
 
 .left, .right {
-
   vertical-align: top;
   height: 100%;
-  /* border: 1px solid red; */
   display: inline-block;
 }
 
@@ -38,10 +36,6 @@ img {
   pointer-events: none;
   text-anchor: middle;
 }
-
-/* .node:hover {
-  font-size: 20px !important;
-} */
 
 line.link {
   fill: none;

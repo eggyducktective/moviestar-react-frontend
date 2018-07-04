@@ -19,25 +19,24 @@ class SearchResults extends Component {
     console.log(this.state);
   }
 
+  getActor(){
+    axios.get(`http://localhost:3000/api/v0/people/search/${this.props.match.params.query}`)
+    .then(res => this.setState({ results: res.data }) )
+    .catch(err => this.setState({error: err}) );
+  }
+
   componentDidMount(){
-    // FIRST: check for an EXACT match for the search name (case insensitive)
-    axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
-    .then(res => {
-      // Redirect to the show page for this actor
-      this.props.history.push(`/actors/${ this.props.match.params.query }`)
-    })
-    .catch(err => {
-      console.log('no exact match!');
-      // No matches for an EXACT name search, so use the
-      // fuzzy (regex) search API instead, to find multiple results?
-      axios.get(`http://localhost:3000/api/v0/people/search/${this.props.match.params.query}`)
-      .then(res => this.setState({ results: res.data }) )
-      .catch(err => this.setState({error: err}) );
-    });
-
-  } // componentDidMount
+    // No matches for an EXACT name search, so use the
+    // fuzzy (regex) search API instead, to find multiple results?
+    this.getActor();
+  }
 
 
+  componentDidUpdate(prevProps){
+    if(prevProps.match.params.query !== this.props.match.params.query){
+      this.getActor();
+    }
+  }
 
   render(){
 

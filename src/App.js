@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
 import {HashRouter as Router, Route} from 'react-router-dom';
 
 import SearchForm from './components/SearchForm';
@@ -35,7 +33,7 @@ class App extends Component {
           <Route path="/actors/:query" render={ (props) => <ShowResult {...props}  addActorCallback={this.updateGraphActors} /> } />
         </div>
         <div className="right">
-          <Graph actorIDs={this.state.actorIDs} addActorCallback={this.updateGraphActors} />
+          <Graph actorIDs={this.state.actorIDs} />
         </div>
       </div>
     </Router>

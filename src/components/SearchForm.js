@@ -22,7 +22,22 @@ class SearchForm extends Component {
   _handleSubmit(event){
     event.preventDefault();
     console.log( '_handleSubmit():', this.state.query );
-    this.props.history.push(`/search/${ this.state.query }`)
+
+
+    axios.get(`http://localhost:3000/api/v0/people/match/${ this.state.query }`)
+    .then( response => {
+      if( response.data.match === true ){
+        // found an exact match, so go to show page for this actor
+        this.props.history.push(`/actors/${ this.state.query }`);
+      } else {
+        // no exact match, go to search results page to perform inexact search
+        this.props.history.push(`/search/${ this.state.query }`);
+      }
+    });
+    // this.props.history.push(`/search/${ this.state.query }`)
+
+
+
   }
 
 

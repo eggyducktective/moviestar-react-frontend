@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 
 
-
 class ShowResult extends Component {
   constructor( props ) {
     super( props );
@@ -22,10 +21,8 @@ class ShowResult extends Component {
     .then(res => {
       console.log('showResult', res.data);
       this.setState({ data: res.data  })
-
     })
     .catch( console.warn );
-
   }
 
   render(){
@@ -36,48 +33,26 @@ class ShowResult extends Component {
    // }
 
     if( this.state.data) {
-      const {name, birthplace, actedIn, profileImageUrl, related} = this.state.data;
+      const {name, birthplace, actedIn, profileImageUrl, related, biography} = this.state.data;
       const films = actedIn.map( film => <li key={film.name}>{ film.name }, their role is { film.role } </li>)
-
-      // const films = actedIn.map((film, index) => {
-      //   <li key={index}>{film.name}, their role is {film.role}</li>
-      // });
-      //
-      const costars = related.map( costar => <li key={costar.id}>
-        <Link to={`/actors/${costar.name}`}>{costar.name}</Link>, their role is {costar.role}
-        </li>)
-
-      // const costars = related.map((costar, key) => {
-      //   console.log('costar:', costar.name);
-      //   console.log('key:', key);
-      //   <li key={key}>
-      //   <Link to={`/actors/${costar.name}`}>{costar.name}</Link>, their role is {costar.role}
-      //   </li>
-      // });
-
-
-
       return(
         <div>
           <h2>Are you ready to look at some stars?</h2>
 
-          <button onClick={() => this.props.addActorCallback(this.state.data.id)}>
-            Add to Graph!
-          </button>
-
-
-            <p> Here is your search: { name }, born in { birthplace }</p>
+            <p> Here is your search: <strong>{ name }</strong></p>
 
             <img src={ profileImageUrl }/>
-            <ul>{ films }</ul>
+            <br/>
+            <button onClick={() => this.props.addActorCallback(this.state.data.id)}>
+              Add to Graph!
+            </button>
 
-
+            <p>{biography}</p>
         </div>
       );
     } else {
       return <div>LOADING...</div>;
     }
-
   }
 }
 
