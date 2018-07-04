@@ -31,7 +31,7 @@ class SearchResults extends Component {
     this.getActor();
   }
 
-
+  // make sure we can enter a new search
   componentDidUpdate(prevProps){
     if(prevProps.match.params.query !== this.props.match.params.query){
       this.getActor();
@@ -41,7 +41,7 @@ class SearchResults extends Component {
   render(){
 
     if( this.state.results.length === 0 ){
-      return <p>Loading...</p>;
+      return <p>Sorry, no match for: {this.props.match.params.query}</p>;
     }
 
     //    /actors/THENAME

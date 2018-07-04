@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import axios from 'axios';
+import {HashRouter as Router, Route} from 'react-router-dom';
+
 
 import { Link } from 'react-router-dom';
 
@@ -24,24 +26,32 @@ class ShowResult extends Component {
     })
     .catch( console.warn );
   }
+
   componentDidUpdate(prevProps){
-    console.log(this.props.location.state)
-    axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
-    .then(res => {
-      console.log('showResult', res.data);
-      this.setState({ data: res.data  })
-    })
-    .catch( console.warn );
+    if(prevProps.match.params.query !== this.props.match.params.query) {
+      console.log(this.props.location.state)
+      axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
+      .then(res => {
+        console.log('showResult', res.data);
+        this.setState({ data: res.data  })
+      })
+      .catch( console.warn );
+    }
   }
+
+  clearGraph() {
+    window.location.reload();
+  }
+
   render(){
     console.log(this.state.data);
    //
-   // if( this.state.error ) {
-   //   return <p> No match for "{this.props.match.params.query}"</p>
-   // }
 
-    if( this.state.data) {
-      const {name, birthplace, actedIn, profileImageUrl, related, biography} = this.state.data;
+
+    if( this.state.data ) {
+      const regex = /(<([^>]+)>)/ig;
+      let {name, birthplace, actedIn, profileImageUrl, related, biography} = this.state.data;
+      biography = biography.replace(regex, '');
       const films = actedIn.map( film => <li key={film.name}>{ film.name }, their role is { film.role } </li>)
       return(
         <div>
@@ -54,8 +64,10 @@ class ShowResult extends Component {
             <button onClick={() => this.props.addActorCallback(this.state.data.id)}>
               Add to Graph!
             </button>
+            <button onClick={this.clearGraph}>Refresh the Graph</button>
+            <p> {birthplace ? 'Birthplace:' + birthplace : ''}</p>
+            <p>{biography ? 'Biography:' + biography : ''}</p>
 
-            <p>{biography}</p>
         </div>
       );
     } else {
