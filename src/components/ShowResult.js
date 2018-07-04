@@ -19,7 +19,7 @@ class ShowResult extends Component {
 
   componentDidMount(){
     // FIRST: check for an EXACT match for the search name (case insensitive)
-    axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
+    axios.get(`http://nodeapi4neo.herokuapp.com/api/v0/people/name/${this.props.match.params.query}`)
     .then(res => {
       console.log('showResult', res.data);
       this.setState({ data: res.data  })
@@ -30,7 +30,7 @@ class ShowResult extends Component {
   componentDidUpdate(prevProps){
     if(prevProps.match.params.query !== this.props.match.params.query) {
       console.log(this.props.location.state)
-      axios.get(`http://localhost:3000/api/v0/people/name/${this.props.match.params.query}`)
+      axios.get(`http://nodeapi4neo.herokuapp.com/api/v0/people/name/${this.props.match.params.query}`)
       .then(res => {
         console.log('showResult', res.data);
         this.setState({ data: res.data  })
@@ -63,7 +63,7 @@ class ShowResult extends Component {
               Add to Graph
             </button>
             <button className="graphButton" onClick={this.clearGraph}>Refresh Graph</button>
-            
+
             <img src={ profileImageUrl }/>
             <br/>
 

@@ -24,7 +24,7 @@ class SearchForm extends Component {
     console.log( '_handleSubmit():', this.state.query );
 
 
-    axios.get(`http://localhost:3000/api/v0/people/match/${ this.state.query }`)
+    axios.get(`http://nodeapi4neo.herokuapp.com/api/v0/people/match/${ this.state.query }`)
     .then( response => {
       if( response.data.match === true ){
         // found an exact match, so go to show page for this actor
