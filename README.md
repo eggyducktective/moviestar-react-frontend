@@ -12,7 +12,7 @@ Have you ever seen a movie and wondered "Is that the same person in that movie X
 Upon visiting this website, you can easily search for an actor, and add them to a graph (this will give you a visually stunning display of said actor's movies).
 You can continue searching for more actors, and the graph will add up. If they have appeared in the same movie or more, you will be able to see the connections very easily :)
 
-![Stars](./public/Graph.png)
+![Stars](./public/starSearch.png)
 
 There is also a 3d graph with cool animation effect that you can play around with. I dont know about you, but I love fiddling with beautiful looking features.
 
