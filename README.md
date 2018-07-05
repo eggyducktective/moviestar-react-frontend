@@ -4,14 +4,16 @@ This is my final project at my Web Development Immersive. I am creating an app t
 
 Check it out now: https://searchthestars.herokuapp.com/
 
-You can see the codes for the bankend here https://github.com/eggyducktective/neo4j-node-backend
+You can see the codes for the backend here https://github.com/eggyducktective/neo4j-node-backend
 
 ## How to use
 
 Have you ever seen a movie and wondered "Is that the same person in that movie X with the other actor Y?". If you answered "Yes", then this is the perfect app for you.
 Upon visiting this website, you can easily search for an actor, and add them to a graph (this will give you a visually stunning display of said actor's movies).
 You can continue searching for more actors, and the graph will add up. If they have appeared in the same movie or more, you will be able to see the connections very easily :)
-![Stars](./public/graph.png)
+
+![Stars](./public/Graph.png)
+
 There is also a 3d graph with cool animation effect that you can play around with. I dont know about you, but I love fiddling with beautiful looking features.
 
 ## Technologies used
