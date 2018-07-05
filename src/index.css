@@ -6,12 +6,15 @@
 * {
   font-family: 'Markazi Text', serif;
   font-size: 19px;
+  color: black;
+  text-align: center;
 }
 
 body {
   margin: 0;
   padding: 5px;
-  background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
+  /* background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%); */
+  background-color: lightgrey;
 
 }
 
@@ -22,7 +25,9 @@ body {
 }
 
 .left {
-  width: 30%;
+  /* width: 30%; */
+  width: 560px;
+  padding-right: 10px;
 }
 
 .right {
@@ -33,6 +38,9 @@ body {
 h1 {
   font-size: 50px;
   text-shadow: 2px 2px rgb(92, 92, 92);
+  margin-top: 0;
+  text-align: center;
+
 }
 
 h2 {
@@ -50,15 +58,26 @@ p {
 
 input {
   font-size: 19px;
+  color: black;
   width: 150px;
   height: 21px;
 }
 
-svg {
-  height: 100vh !important;
-  width: 990px !important;
+button {
+  color: black;
 }
 
+svg {
+  height: 100vh !important;
+  width: 800px !important;
+  border: 2px solid white;
+}
+
+canvas {
+  width: 800px !important;
+  border: 2px solid white;
+
+}
 ul {
   list-style: none;
 }
@@ -118,7 +137,7 @@ img {
 
 line.link {
   fill: none;
-  stroke: rgba(48, 48, 48, 0.4) !important;
+  stroke: rgba(195, 195, 195, 0.6) !important;
   stroke-width: 2px !important;
 }
 
@@ -127,3 +146,12 @@ line.link {
   stroke: #3182bd;
   stroke-width: 1.5px;
 }
+
+/*
+.newGraph {
+  display: none;
+}
+
+.newGraphButton {
+  display: show;
+} */

@@ -13,7 +13,8 @@ class ShowResult extends Component {
   constructor( props ) {
     super( props );
     this.state = {
-      data: null
+      data: null,
+      isHidden: true
     }
   }
 
@@ -43,6 +44,12 @@ class ShowResult extends Component {
     window.location.reload();
   }
 
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
   render(){
     console.log(this.state.data);
    //
@@ -64,7 +71,7 @@ class ShowResult extends Component {
             </button>
             <button className="graphButton" onClick={this.clearGraph}>Refresh Graph</button>
 
-            <figure className="swing"><img src={ profileImageUrl } /></figure> 
+            <figure className="swing"><img src={ profileImageUrl } /></figure>
             <br/>
 
             <p> <strong>Birthplace:</strong> {birthplace ? birthplace : 'N/A'}</p>

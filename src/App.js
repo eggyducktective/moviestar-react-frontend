@@ -5,6 +5,7 @@ import SearchForm from './components/SearchForm';
 import SearchResults from './components/SearchResults';
 import ShowResult from './components/ShowResult';
 import Graph from './components/Graph';
+import NewGraph from './components/NewGraph';
 
 class App extends Component {
 
@@ -33,7 +34,9 @@ class App extends Component {
           <Route path="/actors/:query" render={ (props) => <ShowResult {...props}  addActorCallback={this.updateGraphActors} /> } />
         </div>
         <div className="right">
+          {/* <Graph actorIDs={this.state.actorIDs} />  */}
           <Graph actorIDs={this.state.actorIDs} />
+          <NewGraph actorIDs={this.state.actorIDs} />
         </div>
       </div>
     </Router>

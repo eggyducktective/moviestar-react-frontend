@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Graph as D3Graph } from 'react-d3-graph';
+import { ForceGraph2D, ForceGraph3D, ForceGraphVR } from 'react-force-graph';
 
-
-class Graph extends Component {
+class NewGraph extends Component {
   constructor(props){
     super(props);
     this.state = {
-      // needs to be in App parent
-      // actorIds: [887, 7399], // button should update this, then call _drawGraph
       renderedIds: [], // To store our already rendered actors/movies
       graphNodes: [{id: 'Who are you searching for?'}], // Do not delete this. The page breaks
       graphLinks: [],
@@ -109,22 +106,35 @@ class Graph extends Component {
       },
       link: {
           highlightColor: '#2a2727',
+          highlightColor: 'red',
           linkHightlightBehavior: false,
           semanticStrokeWidth: false
       }
     };
       var data = {nodes: this.state.graphNodes, links: this.state.graphLinks};
     return(
-      <div>
+      <div className="newGraph">
+      <ForceGraph3D
+      id="graph-id"
+         graphData={data}
+         nodeAutoColorBy="group"
+         backgroundColor="lightgrey"
+         linkColor="#000000"
+
+         config={myConfig}
+         onClickNode={ this.expandNode }
+       />,
+      {/*
         <D3Graph
           id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
           data={ data }
           config={myConfig}
           onClickNode={ this.expandNode }
         />
+        */}
       </div>
     );
   }
 }
 
-export default Graph;
+export default NewGraph;
