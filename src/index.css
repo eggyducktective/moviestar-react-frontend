@@ -7,10 +7,10 @@
   font-family: 'Markazi Text', serif;
   font-size: 19px;
 }
+
 body {
   margin: 0;
   padding: 5px;
-  /* font-family: sans-serif; */
   background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
 
 }
@@ -29,34 +29,6 @@ body {
   width: 60%;
 }
 
-svg {
-  height: 100vh !important;
-  width: 990px !important;
-
-}
-
-img {
-  max-width: 300px;
-}
-
-
-.node text {
-  font: 15px 'Markazi Text', serif;;
-  pointer-events: none;
-  text-anchor: middle;
-}
-
-line.link {
-  fill: none;
-  stroke: rgba(48, 48, 48, 0.4) !important;
-  stroke-width: 2px !important;
-}
-
-.node circle {
-  cursor: pointer;
-  stroke: #3182bd;
-  stroke-width: 1.5px;
-}
 
 h1 {
   font-size: 50px;
@@ -79,4 +51,79 @@ p {
 input {
   font-size: 19px;
   width: 150px;
+  height: 21px;
+}
+
+svg {
+  height: 100vh !important;
+  width: 990px !important;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: rgb(31, 164, 129);
+}
+
+img {
+  max-width: 300px;
+}
+
+/* Swinging effect for Actor's photo*/
+.swing {
+    animation: swing ease-in-out 1s infinite alternate;
+    transform-origin: center -20px;
+    float:left;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+.swing img {
+    border: 5px solid #f8f8f8;
+    display: block;
+}
+.swing:after{
+    content: '';
+    position: absolute;
+    width: 20px; height: 20px;
+    border: 1px solid #999;
+    top: -10px; left: 50%;
+    z-index: 0;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+/* nail-hanging-on-the-wall effect */
+.swing:before{
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    top: -14px;left: 54%;
+    z-index: 5;
+    border-radius: 50% 50%;
+    background: #000;
+}
+
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+/* Graph stuff */
+.node text {
+  font: 15px 'Markazi Text', serif;;
+  pointer-events: none;
+  text-anchor: middle;
+}
+
+line.link {
+  fill: none;
+  stroke: rgba(48, 48, 48, 0.4) !important;
+  stroke-width: 2px !important;
+}
+
+.node circle {
+  cursor: pointer;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
 }

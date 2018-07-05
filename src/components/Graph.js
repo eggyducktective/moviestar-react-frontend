@@ -105,7 +105,8 @@ class Graph extends Component {
           fontColor: 'black',
           highlightStrokeColor: 'rgb(245, 217, 100)',
           labelProperty: 'name',
-          opacity: 0.9
+          opacity: 0.9,
+          stroke: 'red'
       },
       link: {
           highlightColor: '#2a2727',

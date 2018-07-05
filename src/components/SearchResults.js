@@ -47,7 +47,7 @@ class SearchResults extends Component {
     //    /actors/THENAME
     console.log(this.state.results);
     const results = this.state.results.map( r => (
-      <li>
+      <li key="r.id">
         <Link to={`/actors/${r.name}`}>{r.name}</Link>
       </li>
     ));

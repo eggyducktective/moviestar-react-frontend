@@ -64,7 +64,7 @@ class ShowResult extends Component {
             </button>
             <button className="graphButton" onClick={this.clearGraph}>Refresh Graph</button>
 
-            <img src={ profileImageUrl }/>
+            <figure className="swing"><img src={ profileImageUrl } /></figure> 
             <br/>
 
             <p> <strong>Birthplace:</strong> {birthplace ? birthplace : 'N/A'}</p>
