@@ -63,18 +63,19 @@ input {
   height: 21px;
 }
 
+
 button {
   color: black;
 }
 
 svg {
   height: 100vh !important;
-  width: 800px !important;
+  width: 990px !important;
   border: 2px solid white;
 }
 
 canvas {
-  width: 800px !important;
+  width: 990px !important;
   border: 2px solid white;
 
 }
@@ -137,21 +138,13 @@ img {
 
 line.link {
   fill: none;
-  stroke: rgba(195, 195, 195, 0.6) !important;
+  stroke: rgba(88, 88, 88, 0.4) !important;
   stroke-width: 2px !important;
 }
 
 .node circle {
   cursor: pointer;
   stroke: #3182bd;
-  stroke-width: 1.5px;
-}
+  stroke-width: 1.9px;
 
-/*
-.newGraph {
-  display: none;
 }
-
-.newGraphButton {
-  display: show;
-} */
