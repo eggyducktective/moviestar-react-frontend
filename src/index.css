@@ -16,6 +16,7 @@ body {
   /* background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%); */
   background-color: lightgrey;
 
+
 }
 
 .left, .right {
@@ -79,12 +80,12 @@ input[type=text] {
 
 svg {
   height: 100vh !important;
-  width: 990px !important;
+  width: 1000px !important;
   border: 2px solid white;
 }
 
 canvas {
-  width: 990px !important;
+  width: 1000px !important;
   border: 2px solid white;
 }
 
@@ -140,7 +141,7 @@ img {
 
 /* Graph stuff */
 .node text {
-  font: 15px 'Markazi Text', serif;;
+  font: 18px 'Markazi Text', serif;;
   pointer-events: none;
   text-anchor: middle;
 }
@@ -148,7 +149,7 @@ img {
 line.link {
   fill: none;
   stroke: rgba(88, 88, 88, 0.4) !important;
-  stroke-width: 2px !important;
+  stroke-width: 3px !important;
 }
 
 .node circle {

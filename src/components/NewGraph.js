@@ -118,7 +118,7 @@ class NewGraph extends Component {
       id="graph-id"
          graphData={data}
          nodeAutoColorBy="group"
-         backgroundColor="lightgrey"
+         backgroundColor="black"
          linkColor="#000000"
 
          config={myConfig}

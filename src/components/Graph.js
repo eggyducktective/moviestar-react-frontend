@@ -10,7 +10,7 @@ class Graph extends Component {
       // needs to be in App parent
       // actorIds: [887, 7399], // button should update this, then call _drawGraph
       renderedIds: [], // To store our already rendered actors/movies
-      graphNodes: [{id: 'Who are you searching for?'}], // Do not delete this. The page breaks
+      graphNodes: [{id: 'STARRY NIGHT'}], // Do not delete this. The page breaks
       graphLinks: [],
       firstRender: false
     }
