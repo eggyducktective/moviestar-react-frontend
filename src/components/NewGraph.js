@@ -82,11 +82,11 @@ class NewGraph extends Component {
     this.setState({ renderedIds: [...this.state.renderedIds, nodeId] })
   }
 
-  _clearGraph() {
-    this.setState({ graphNodes: [] })
-    this.setState({ graphLinks: [] })
-    this.setState({ renderedIds: [] })
-  }
+  // _clearGraph() {
+  //   this.setState({ graphNodes: [] })
+  //   this.setState({ graphLinks: [] })
+  //   this.setState({ renderedIds: [] })
+  // }
 
   render() {
     const myConfig = {
@@ -123,15 +123,8 @@ class NewGraph extends Component {
 
          config={myConfig}
          onClickNode={ this.expandNode }
-       />,
-      {/*
-        <D3Graph
-          id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-          data={ data }
-          config={myConfig}
-          onClickNode={ this.expandNode }
-        />
-        */}
+       />
+
       </div>
     );
   }

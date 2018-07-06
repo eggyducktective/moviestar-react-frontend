@@ -49,6 +49,9 @@ class Graph extends Component {
           }
 
         }) //end .then
+        .catch(err => {
+          console.log('ERRORR', err);
+        })
       } // end if - includes
     } // end for
   } // end _drawGraph
@@ -85,11 +88,11 @@ class Graph extends Component {
     this.setState({ renderedIds: [...this.state.renderedIds, nodeId] })
   }
 
-  _clearGraph() {
-    this.setState({ graphNodes: [] })
-    this.setState({ graphLinks: [] })
-    this.setState({ renderedIds: [] })
-  }
+  // _clearGraph() {
+  //   this.setState({ graphNodes: [] })
+  //   this.setState({ graphLinks: [] })
+  //   this.setState({ renderedIds: [] })
+  // }
 
   render() {
     const myConfig = {

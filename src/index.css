@@ -40,7 +40,6 @@ h1 {
   text-shadow: 2px 2px rgb(92, 92, 92);
   margin-top: 0;
   text-align: center;
-
 }
 
 h2 {
@@ -50,6 +49,7 @@ h2 {
 p {
   font-size: 20px;
 }
+
 .graphButton {
   width: 150px;
   height: 30px;
@@ -58,14 +58,23 @@ p {
 
 input {
   font-size: 19px;
-  color: black;
   width: 150px;
   height: 21px;
 }
 
+input[type=submit] {
+  padding: 2px 5px;
+  border:0 none;
+  cursor:pointer;
+  height: 27px !important;
+  border-radius: 20px;
+}
 
-button {
-  color: black;
+input[type=text] {
+  padding:2px;
+  border:2px solid #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 svg {
@@ -77,8 +86,8 @@ svg {
 canvas {
   width: 990px !important;
   border: 2px solid white;
-
 }
+
 ul {
   list-style: none;
 }
@@ -102,7 +111,7 @@ img {
     border: 5px solid #f8f8f8;
     display: block;
 }
-.swing:after{
+.swing:after {
     content: '';
     position: absolute;
     width: 20px; height: 20px;
@@ -114,7 +123,7 @@ img {
     transform: rotate(45deg);
 }
 /* nail-hanging-on-the-wall effect */
-.swing:before{
+.swing:before {
     content: '';
     position: absolute;
     width: 5px; height: 5px;
@@ -146,5 +155,4 @@ line.link {
   cursor: pointer;
   stroke: #3182bd;
   stroke-width: 1.9px;
-
 }

@@ -14,7 +14,6 @@ class ShowResult extends Component {
     super( props );
     this.state = {
       data: null,
-      isHidden: true
     }
   }
 
@@ -44,22 +43,17 @@ class ShowResult extends Component {
     window.location.reload();
   }
 
-  toggleHidden() {
-    this.setState({
-      isHidden: !this.state.isHidden
-    })
-  }
-
   render(){
-    console.log(this.state.data);
-   //
+    // console.log(this.state.data.length);
 
-
-    if( this.state.data ) {
+    if( this.state.data !== null ) {
       const regex = /(<([^>]+)>)/ig;
       let {name, birthplace, actedIn, profileImageUrl, related, biography} = this.state.data;
       biography = biography.replace(regex, '');
       const films = actedIn.map( film => <li key={film.name}>{ film.name }, their role is { film.role } </li>)
+      const image = this.state.data.profileImageUrl.length > 0 ? this.state.data.profileImageUrl : 'NoImage.jpg';
+
+      console.log('HEREE IS IMAGE', this.state.data.profileImageUrl.length);
       return(
         <div>
           <h2>Are you ready to look at some stars?</h2>
@@ -71,7 +65,7 @@ class ShowResult extends Component {
             </button>
             <button className="graphButton" onClick={this.clearGraph}>Refresh Graph</button>
 
-            <figure className="swing"><img src={ profileImageUrl } /></figure>
+            <figure className="swing"><img src={ image } /></figure>
             <br/>
 
             <p> <strong>Birthplace:</strong> {birthplace ? birthplace : 'N/A'}</p>
