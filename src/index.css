@@ -26,13 +26,12 @@ body {
 }
 
 .left {
-  /* width: 30%; */
-  width: 560px;
+  width: 500px;
   padding-right: 10px;
 }
 
 .right {
-  width: 60%;
+  width: 65%;
 }
 
 
@@ -80,14 +79,14 @@ input[type=text] {
 
 svg {
   height: 100vh !important;
-  width: 1000px !important;
+  width: 980px !important;
   border: 2px solid white;
 }
 
 
 
 canvas {
-  width: 1000px !important;
+  width: 980px !important;
   border: 2px solid white;
 }
 
